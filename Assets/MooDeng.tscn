@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cisp57ttsxee8"]
+
+[ext_resource type="Script" uid="uid://st1ryyeiwm0u" path="res://Assets/moo_deng.gd" id="1_s3isx"]
+[ext_resource type="Texture2D" uid="uid://cp6deo4rtmhms" path="res://Assets/hippo.png" id="2_v3uai"]
+
+[node name="MooDeng" type="CharacterBody2D"]
+slide_on_ceiling = false
+script = ExtResource("1_s3isx")
+
+[node name="Hippo" type="Sprite2D" parent="."]
+position = Vector2(297, 238)
+rotation = 1.5708
+texture = ExtResource("2_v3uai")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, 15)
+polygon = PackedVector2Array(239, 15, 482, 44, 549, 166, 496, 405, 214, 397, 38, 308, 6, 184, 101, 85)
+
+[connection signal="hit" from="." to="." method="_on_body_entered"]

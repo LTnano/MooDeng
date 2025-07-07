@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgju3tgcsofo1"]
+
+[ext_resource type="Texture2D" uid="uid://bg2fk54jeaieq" path="res://Assets/treemooo.jpg" id="1_4mnl2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4mnl2"]
+size = Vector2(163, 945)
+
+[node name="Tree" type="StaticBody2D"]
+
+[node name="Treemooo" type="Sprite2D" parent="."]
+position = Vector2(92.0001, 482)
+scale = Vector2(0.166327, 0.967347)
+texture = ExtResource("1_4mnl2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(92.5, 480.5)
+shape = SubResource("RectangleShape2D_4mnl2")
