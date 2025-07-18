@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
+@export var boundary: ArenaArea
 @export var speed = 1500
+@export var offset = Vector2(250, 150)
 var hippo_speed = Vector2.ZERO
 var screen_size
 
@@ -20,8 +22,8 @@ func _process(delta):
 	if Input.is_action_pressed("move_up"):
 		hippo_speed.y -= speed
 
-	position += hippo_speed * delta
-	hippo_speed = Vector2.ZERO
+	move_hippo(hippo_speed, delta)
+
 	
 	# slide backwards like michael jackson
 	
@@ -31,3 +33,26 @@ func hippo_flip():
 		$Hippo.flip_h = true
 	else:
 		$Hippo.flip_h = false
+		
+
+func move_hippo(new_speed, delta):
+	var test_pos = position
+	test_pos += hippo_speed * delta
+	test_pos = limit_boundary(test_pos)
+	position = test_pos
+	hippo_speed = Vector2.ZERO
+
+func limit_boundary(pos) -> Vector2:
+	if boundary:
+		if pos.x < boundary.top_left.x  + offset.x:
+			pos.x = boundary.top_left.x  + offset.x
+		if pos.y < boundary.top_left.y  + offset.y:
+			pos.y = boundary.top_left.y  + offset.y
+		if pos.x > boundary.bottom_right.x  - offset.x:
+			pos.x = boundary.bottom_right.x  - offset.x
+		if pos.y > boundary.bottom_right.y - offset.y:
+			pos.y = boundary.bottom_right.y - offset.y
+		return pos
+	return pos
+	
+	

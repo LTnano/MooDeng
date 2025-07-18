@@ -1,11 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://bewuhqlb6w2rr"]
+[gd_scene load_steps=3 format=3 uid="uid://bewuhqlb6w2rr"]
 
 [ext_resource type="PackedScene" uid="uid://cisp57ttsxee8" path="res://Assets/MooDeng.tscn" id="1_jhy4y"]
+[ext_resource type="Script" uid="uid://dv5nc225g0xay" path="res://Levels/arena_area.gd" id="2_ffqpf"]
 
 [node name="TestGameplay" type="Node2D"]
 
-[node name="MooDeng" parent="." instance=ExtResource("1_jhy4y")]
+[node name="MooDeng" parent="." node_paths=PackedStringArray("boundary") instance=ExtResource("1_jhy4y")]
 position = Vector2(13, 0)
+boundary = NodePath("../ArenaArea")
 speed = 1200
+offset = Vector2(30, 20)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ArenaArea" type="Node2D" parent="."]
+script = ExtResource("2_ffqpf")
+top_left = Vector2(-576, -324)
+bottom_right = Vector2(576, 324)

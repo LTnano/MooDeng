@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cp6deo4rtmhms" path="res://Assets/hippo.png" id="2_v3uai"]
 
 [node name="MooDeng" type="CharacterBody2D"]
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.1, 0.1)
 slide_on_ceiling = false
 script = ExtResource("1_s3isx")
 
@@ -12,5 +12,5 @@ script = ExtResource("1_s3isx")
 texture = ExtResource("2_v3uai")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(-292, -213)
+position = Vector2(-290, -210)
 polygon = PackedVector2Array(239, 15, 478, 45, 549, 196, 486, 389, 206, 387, 63, 319, 3, 186, 101, 85)
