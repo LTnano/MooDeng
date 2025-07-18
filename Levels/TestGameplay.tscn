@@ -20,21 +20,21 @@ script = ExtResource("2_ffqpf")
 top_left = Vector2(-576, -324)
 bottom_right = Vector2(576, 324)
 
-[node name="Balls" parent="." instance=ExtResource("3_wun53")]
-position = Vector2(-104, 0)
-
 [node name="Barrier" parent="." instance=ExtResource("4_mwrxl")]
-position = Vector2(-589, 66)
-scale = Vector2(1, 50)
+position = Vector2(-586, 0)
+scale = Vector2(1, 32.4)
 
 [node name="Barrier2" parent="." instance=ExtResource("4_mwrxl")]
-position = Vector2(587, -35)
-scale = Vector2(1, 50)
+position = Vector2(586, 0)
+scale = Vector2(1, 32.4)
 
 [node name="Barrier3" parent="." instance=ExtResource("4_mwrxl")]
-position = Vector2(-21, -338)
-scale = Vector2(70, 1)
+position = Vector2(0, -334)
+scale = Vector2(57.6, 1)
 
 [node name="Barrier4" parent="." instance=ExtResource("4_mwrxl")]
-position = Vector2(11, 335)
-scale = Vector2(70, 1)
+position = Vector2(0, 334)
+scale = Vector2(57.6, 1)
+
+[node name="Balls" parent="." instance=ExtResource("3_wun53")]
+position = Vector2(-197, -129)
