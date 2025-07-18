@@ -8,12 +8,8 @@ slide_on_ceiling = false
 script = ExtResource("1_s3isx")
 
 [node name="Hippo" type="Sprite2D" parent="."]
-position = Vector2(297, 238)
-rotation = 1.5708
 texture = ExtResource("2_v3uai")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(0, 15)
-polygon = PackedVector2Array(239, 15, 482, 44, 549, 166, 496, 405, 214, 397, 38, 308, 6, 184, 101, 85)
-
-[connection signal="hit" from="." to="." method="_on_body_entered"]
+position = Vector2(-292, -213)
+polygon = PackedVector2Array(239, 15, 478, 45, 549, 196, 486, 389, 206, 387, 63, 319, 3, 186, 101, 85)

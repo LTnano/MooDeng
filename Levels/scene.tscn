@@ -1,12 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bewuhqlb6w2rr"]
+[gd_scene load_steps=2 format=3 uid="uid://bewuhqlb6w2rr"]
 
 [ext_resource type="PackedScene" uid="uid://cisp57ttsxee8" path="res://Assets/MooDeng.tscn" id="1_7tueh"]
-[ext_resource type="PackedScene" uid="uid://bgju3tgcsofo1" path="res://Assets/tree.tscn" id="2_8mlfl"]
 
 [node name="Scene" type="Node2D"]
 
-[node name="Tree" parent="." instance=ExtResource("2_8mlfl")]
-position = Vector2(-6, -6)
-
 [node name="MooDeng" parent="." instance=ExtResource("1_7tueh")]
-position = Vector2(357, 97)
+position = Vector2(748, 321)
+speed = 5000
