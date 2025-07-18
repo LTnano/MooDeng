@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bewuhqlb6w2rr"]
+
+[ext_resource type="PackedScene" uid="uid://cisp57ttsxee8" path="res://Assets/MooDeng.tscn" id="1_jhy4y"]
+
+[node name="TestGameplay" type="Node2D"]
+
+[node name="MooDeng" parent="." instance=ExtResource("1_jhy4y")]
+position = Vector2(13, 0)
+speed = 1200
+
+[node name="Camera2D" type="Camera2D" parent="."]

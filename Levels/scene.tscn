@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bewuhqlb6w2rr"]
-
-[ext_resource type="PackedScene" uid="uid://cisp57ttsxee8" path="res://Assets/MooDeng.tscn" id="1_7tueh"]
-
-[node name="Scene" type="Node2D"]
-
-[node name="MooDeng" parent="." instance=ExtResource("1_7tueh")]
-position = Vector2(748, 321)
-speed = 5000
