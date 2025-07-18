@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bewuhqlb6w2rr"]
+[gd_scene load_steps=5 format=3 uid="uid://bewuhqlb6w2rr"]
 
 [ext_resource type="PackedScene" uid="uid://cisp57ttsxee8" path="res://Assets/MooDeng.tscn" id="1_jhy4y"]
 [ext_resource type="Script" uid="uid://dv5nc225g0xay" path="res://Levels/arena_area.gd" id="2_ffqpf"]
+[ext_resource type="PackedScene" uid="uid://bdgaiubmoy8sk" path="res://Assets/balls.tscn" id="3_wun53"]
+[ext_resource type="PackedScene" uid="uid://p8rc0idb7qim" path="res://Levels/barrier.tscn" id="4_mwrxl"]
 
 [node name="TestGameplay" type="Node2D"]
 
@@ -17,3 +19,22 @@ offset = Vector2(30, 20)
 script = ExtResource("2_ffqpf")
 top_left = Vector2(-576, -324)
 bottom_right = Vector2(576, 324)
+
+[node name="Balls" parent="." instance=ExtResource("3_wun53")]
+position = Vector2(-104, 0)
+
+[node name="Barrier" parent="." instance=ExtResource("4_mwrxl")]
+position = Vector2(-589, 66)
+scale = Vector2(1, 50)
+
+[node name="Barrier2" parent="." instance=ExtResource("4_mwrxl")]
+position = Vector2(587, -35)
+scale = Vector2(1, 50)
+
+[node name="Barrier3" parent="." instance=ExtResource("4_mwrxl")]
+position = Vector2(-21, -338)
+scale = Vector2(70, 1)
+
+[node name="Barrier4" parent="." instance=ExtResource("4_mwrxl")]
+position = Vector2(11, 335)
+scale = Vector2(70, 1)
