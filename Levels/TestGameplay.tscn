@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cisp57ttsxee8" path="res://Assets/MooDeng.tscn" id="1_jhy4y"]
 [ext_resource type="Script" uid="uid://dv5nc225g0xay" path="res://Levels/arena_area.gd" id="2_ffqpf"]
 [ext_resource type="PackedScene" uid="uid://bdgaiubmoy8sk" path="res://Assets/balls.tscn" id="3_wun53"]
-[ext_resource type="PackedScene" uid="uid://p8rc0idb7qim" path="res://Levels/barrier.tscn" id="4_mwrxl"]
+[ext_resource type="PackedScene" path="res://Levels/barrier.tscn" id="4_mwrxl"]
 
 [node name="TestGameplay" type="Node2D"]
 
@@ -38,3 +38,15 @@ scale = Vector2(57.6, 1)
 
 [node name="Balls" parent="." instance=ExtResource("3_wun53")]
 position = Vector2(-197, -129)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -545.0
+offset_bottom = 317.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 68
+text = "BALLS CONSUMED: 0"

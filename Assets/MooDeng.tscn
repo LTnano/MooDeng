@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cisp57ttsxee8"]
+[gd_scene load_steps=4 format=3 uid="uid://cisp57ttsxee8"]
 
 [ext_resource type="Script" uid="uid://st1ryyeiwm0u" path="res://Assets/moo_deng.gd" id="1_s3isx"]
 [ext_resource type="Texture2D" uid="uid://cp6deo4rtmhms" path="res://Assets/hippo.png" id="2_v3uai"]
+[ext_resource type="Script" uid="uid://c1eujgb0tqx43" path="res://Assets/mouth_shape_2d.gd" id="3_v3uai"]
 
 [node name="MooDeng" type="CharacterBody2D"]
 scale = Vector2(0.1, 0.1)
@@ -14,3 +15,10 @@ texture = ExtResource("2_v3uai")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(-290, -210)
 polygon = PackedVector2Array(239, 15, 478, 45, 549, 196, 486, 389, 206, 387, 63, 319, 3, 186, 101, 85)
+
+[node name="MouthShape2D" type="Area2D" parent="."]
+position = Vector2(-220, 110)
+rotation = 1.1973
+script = ExtResource("3_v3uai")
+
+[connection signal="yumyum" from="MouthShape2D" to="." method="_on_mouth_shape_2d_yumyum"]

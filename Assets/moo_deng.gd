@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var offset = Vector2(250, 150)
 var hippo_speed = Vector2.ZERO
 var screen_size
+var	balls_consumed 
 
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -56,3 +57,7 @@ func limit_boundary(pos) -> Vector2:
 	return pos
 	
 	
+
+
+func _on_mouth_shape_2d_yumyum() -> void:
+	balls_consumed += 1
