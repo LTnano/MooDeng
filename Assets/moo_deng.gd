@@ -1,16 +1,15 @@
 extends CharacterBody2D
-
+class_name mooDeng
 @export var boundary: ArenaArea
 @export var speed = 1500
 @export var offset = Vector2(250, 150)
+signal score_increase 
 var hippo_speed = Vector2.ZERO
 var screen_size
-var	balls_consumed 
 
 func _ready():
 	screen_size = get_viewport_rect().size
 	
-
 func _process(delta):
 	if Input.is_action_pressed("move_right"):
 		hippo_speed.x += speed
@@ -59,5 +58,6 @@ func limit_boundary(pos) -> Vector2:
 	
 
 
-func _on_mouth_shape_2d_yumyum() -> void:
-	balls_consumed += 1
+func _on_yumyum() -> void:
+	emit_signal("score_increase")
+	

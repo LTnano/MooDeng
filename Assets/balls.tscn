@@ -1,9 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdgaiubmoy8sk"]
+[gd_scene load_steps=5 format=3 uid="uid://bdgaiubmoy8sk"]
 
 [ext_resource type="Script" uid="uid://cekej5jh6p2tp" path="res://Assets/balls.gd" id="1_metgv"]
 [ext_resource type="Texture2D" uid="uid://c4xlyltxe807n" path="res://birb.PNG" id="2_sblci"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_enbwy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_metgv"]
 
 [node name="Balls" type="RigidBody2D"]
 script = ExtResource("1_metgv")
@@ -15,3 +17,12 @@ shape = SubResource("CircleShape2D_enbwy")
 position = Vector2(1.19209e-07, -5.96046e-08)
 scale = Vector2(0.0102146, 0.0147623)
 texture = ExtResource("2_sblci")
+
+[node name="BallDetector" type="Area2D" parent="."]
+
+[node name="BallDetectorShape" type="CollisionShape2D" parent="BallDetector"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_metgv")
+debug_color = Color(0.939697, 0.246512, 0, 0.42)
+
+[connection signal="body_entered" from="BallDetector" to="." method="_on_ball_detector_body_entered"]
