@@ -10,3 +10,5 @@ func _ready():
 func _onscore():
 	ballConsumed += 1
 	$CanvasLayer/Label.set_text("Balls Consumed:" + str(ballConsumed))
+func _process(delta: float) -> void:
+	$Ballspawner.spawnball()
