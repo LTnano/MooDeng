@@ -19,7 +19,11 @@ boundary = NodePath("../ArenaArea")
 speed = 1000
 offset = Vector2(30, 20)
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="MainCamera" type="Camera2D" parent="."]
+
+[node name="DebugCamera" type="Camera2D" parent="."]
+enabled = false
+zoom = Vector2(0.5, 0.5)
 
 [node name="ArenaArea" type="Node2D" parent="."]
 script = ExtResource("2_ffqpf")
