@@ -1,5 +1,8 @@
 extends Node2D
 class_name ballspawner
+const BallType = preload("res://Assets/ball_types.gd").ball_type
+const BallTypes = preload("res://Assets/ball_types.gd")
+@onready var ball_type_label = get_node("../GameUI/BallTypeLabel")
 @onready var balltemp= preload("res://Assets/balls.tscn")
 @export var boundarybox: Area2D
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bdgaiubmoy8sk"]
+[gd_scene load_steps=7 format=3 uid="uid://bdgaiubmoy8sk"]
 
 [ext_resource type="Script" uid="uid://cekej5jh6p2tp" path="res://Assets/balls.gd" id="1_metgv"]
 [ext_resource type="Texture2D" uid="uid://do6g5wrcblyt" path="res://Assets/apple.png" id="2_metgv"]
+[ext_resource type="Texture2D" uid="uid://bpls5hk0g5pc7" path="res://Assets/cherry.png" id="3_enbwy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_enbwy"]
 
@@ -14,6 +15,29 @@ animations = [{
 "loop": true,
 "name": &"Apple",
 "speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Blueberry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_enbwy")
+}],
+"loop": true,
+"name": &"Cherry",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Peach",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Watermelon",
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_metgv"]
@@ -24,10 +48,10 @@ script = ExtResource("1_metgv")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_enbwy")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="BallSelectionBox" type="AnimatedSprite2D" parent="."]
 position = Vector2(1.19209e-07, -5.96046e-08)
 sprite_frames = SubResource("SpriteFrames_7wyg0")
-animation = &"Apple"
+animation = &"Blueberry"
 
 [node name="BallDetector" type="Area2D" parent="."]
 
