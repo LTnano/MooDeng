@@ -1,4 +1,5 @@
 extends Node2D
+const BallTypes = preload("res://Assets/ball_types.gd")
 var ballConsumed
 var ourMooDeng
 var initialSpeed
@@ -21,9 +22,21 @@ func _ready():
 		# Connect the yumyum signal to our MooDeng instance
 		balls.yumyum.connect(ourMooDeng._on_yumyum)
 
-func _onscore():
-
-	ballConsumed += 1
+func _onscore(ballRef: blueBalls):
+	match ballRef.type_name:
+		"Apple":
+			ballConsumed += 1
+		"Blueberry":
+			ballConsumed += 3
+		"Cherry":
+			ballConsumed += 2
+		"Peach":
+			ballConsumed += 1
+		"Watermelon":
+			ballConsumed += 5
+		_:
+			ballConsumed += 1
+	
 	$CanvasLayer/Label.set_text("Balls Consumed:" + str(ballConsumed))
 	var balls = $Ballspawner.spawnball(initialSpeed, initialAngle)
 	balls.yumyum.connect(ourMooDeng._on_yumyum)

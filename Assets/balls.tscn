@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://bdgaiubmoy8sk"]
 
 [ext_resource type="Script" uid="uid://cekej5jh6p2tp" path="res://Assets/balls.gd" id="1_metgv"]
-[ext_resource type="Texture2D" uid="uid://do6g5wrcblyt" path="res://Assets/apple.png" id="2_metgv"]
+[ext_resource type="Texture2D" uid="uid://fns0anxk6rw7" path="res://Assets/newapple.png" id="2_h3ht5"]
 [ext_resource type="Texture2D" uid="uid://bpls5hk0g5pc7" path="res://Assets/cherry.png" id="3_enbwy"]
-[ext_resource type="Texture2D" uid="uid://w3jd4l50dyjk" path="res://Assets/blueberryplh.png" id="3_h3ht5"]
+[ext_resource type="Texture2D" uid="uid://cfrfbmcwil358" path="res://Assets/blueberry.png" id="3_pysu5"]
 [ext_resource type="Texture2D" uid="uid://df3ulgbfjdxjn" path="res://Assets/peach.png" id="4_enbwy"]
-[ext_resource type="Texture2D" uid="uid://w3fp25yog2te" path="res://Assets/watermelonplh.png" id="6_pysu5"]
+[ext_resource type="Texture2D" uid="uid://bdfbrllllj3a7" path="res://Assets/watermelon.png" id="6_b5pv8"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h3ht5"]
 bounce = 0.75
@@ -16,7 +16,7 @@ bounce = 0.75
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_metgv")
+"texture": ExtResource("2_h3ht5")
 }],
 "loop": true,
 "name": &"Apple",
@@ -24,7 +24,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_h3ht5")
+"texture": ExtResource("3_pysu5")
 }],
 "loop": true,
 "name": &"Blueberry",
@@ -48,7 +48,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_pysu5")
+"texture": ExtResource("6_b5pv8")
 }],
 "loop": true,
 "name": &"Watermelon",
@@ -62,17 +62,19 @@ physics_material_override = SubResource("PhysicsMaterial_h3ht5")
 script = ExtResource("1_metgv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2.5, 2.5)
 shape = SubResource("CircleShape2D_enbwy")
 
 [node name="BallSelectionBox" type="AnimatedSprite2D" parent="."]
 position = Vector2(1.19209e-07, -5.96046e-08)
+scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_7wyg0")
-animation = &"Cherry"
+animation = &"Watermelon"
 
 [node name="BallDetector" type="Area2D" parent="."]
 
 [node name="BallDetectorShape" type="CollisionShape2D" parent="BallDetector"]
-scale = Vector2(1.5, 1.5)
+scale = Vector2(3.75, 3.75)
 shape = SubResource("CircleShape2D_metgv")
 debug_color = Color(0.939697, 0.246512, 0, 0.42)
 

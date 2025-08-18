@@ -3,7 +3,7 @@ class_name mooDeng
 @export var boundary: ArenaArea
 @export var speed = 1500
 @export var offset = Vector2(250, 150)
-signal score_increase 
+signal score_increase(ballRef : blueBalls)
 var hippo_speed = Vector2.ZERO
 var screen_size
 
@@ -58,6 +58,6 @@ func limit_boundary(pos) -> Vector2:
 	
 
 
-func _on_yumyum() -> void:
-	emit_signal("score_increase")
+func _on_yumyum(ballRef: blueBalls) -> void:
+	emit_signal("score_increase", ballRef)
 	
