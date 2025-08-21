@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bewuhqlb6w2rr"]
+[gd_scene load_steps=9 format=3 uid="uid://bewuhqlb6w2rr"]
 
 [ext_resource type="Script" uid="uid://dt06m68t7ttso" path="res://Levels/gameplayloop.gd" id="1_1xdii"]
 [ext_resource type="PackedScene" uid="uid://cisp57ttsxee8" path="res://Assets/MooDeng.tscn" id="1_jhy4y"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bt4etflsidt30" path="res://Assets/ballspawner.tscn" id="2_w7lws"]
 [ext_resource type="PackedScene" uid="uid://p8rc0idb7qim" path="res://Levels/barrier.tscn" id="4_mwrxl"]
 [ext_resource type="Script" uid="uid://bkufkq1q5hs4b" path="res://Levels/ballspawncontainer.gd" id="7_ciu7a"]
+[ext_resource type="Texture2D" uid="uid://b3inbvekgjf8t" path="res://Assets/placeholdergrass.png" id="7_rv2wt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w7lws"]
 size = Vector2(1130, 630)
@@ -13,11 +14,15 @@ size = Vector2(1130, 630)
 [node name="TestGameplay" type="Node2D"]
 script = ExtResource("1_1xdii")
 
-[node name="MooDeng" parent="." node_paths=PackedStringArray("boundary") instance=ExtResource("1_jhy4y")]
-position = Vector2(13, 0)
-boundary = NodePath("../ArenaArea")
-speed = 1000
-offset = Vector2(30, 20)
+[node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(320, 320)
+autoscroll = Vector2(-32, 0)
+repeat_times = 30
+
+[node name="GrassSprite" type="Sprite2D" parent="Parallax2D"]
+texture_repeat = 2
+scale = Vector2(10, 10)
+texture = ExtResource("7_rv2wt")
 
 [node name="MainCamera" type="Camera2D" parent="."]
 
@@ -68,3 +73,9 @@ script = ExtResource("7_ciu7a")
 position = Vector2(2, 1)
 shape = SubResource("RectangleShape2D_w7lws")
 debug_color = Color(0.267285, 0.633484, 0, 0.027451)
+
+[node name="MooDeng" parent="." node_paths=PackedStringArray("boundary") instance=ExtResource("1_jhy4y")]
+position = Vector2(2, 1)
+boundary = NodePath("../ArenaArea")
+speed = 1000
+offset = Vector2(30, 20)
