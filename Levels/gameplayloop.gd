@@ -1,45 +1,65 @@
 extends Node2D
+
 const BallTypes = preload("res://Assets/ball_types.gd")
-var ballConsumed
-var ourMooDeng
+const playerEnum = preload("res://Assets/player_enum.gd")
+
 var initialSpeed
 var initialAngle
 
+var dengArray = []
+var scores = []
+
+@export var numberOfPlayers: int = clamp(4, 1, 4)
+@onready var playerTemp= preload("res://Assets/MooDeng.tscn")
+@onready var score_labels = [$CanvasLayer/ScoreContainer/ScoreLabel1,
+							$CanvasLayer/ScoreContainer/ScoreLabel2,
+							$CanvasLayer/ScoreContainer/ScoreLabel3,
+							$CanvasLayer/ScoreContainer/ScoreLabel4]
+
 func _ready():
+	for each in range(numberOfPlayers):
+		var newDeng = playerTemp.instantiate()
+		newDeng.player_number = each
+		add_child(newDeng)
+		dengArray.append(newDeng)
 
-	ourMooDeng = $MooDeng
 
-	ballConsumed = 0
+	scores.clear()
+	for i in range(numberOfPlayers):
+		scores.append(0)
 
-	ourMooDeng.score_increase.connect(self._onscore)
+	for each in dengArray:
+		each.score_increase.connect(self._onscore)
+
 	for i in range(15):
-
 		# Spawn initial balls
 		# This will spawn 15 balls at the start of the game
 		_recalculate_spawn_parameters()
 		var balls = $Ballspawner.spawnball(initialSpeed, initialAngle)
 
-		# Connect the yumyum signal to our MooDeng instance
-		balls.yumyum.connect(ourMooDeng._on_yumyum)
+		# Connect the yumyum signal to each MooDeng instance
+		for deng in dengArray:
+			balls.yumyum.connect(deng._on_yumyum)
 
-func _onscore(ballRef: blueBalls):
+func _onscore(player_number: int, ballRef: blueBalls):
 	match ballRef.type_name:
 		"Apple":
-			ballConsumed += 1
+			scores[player_number] += 1
 		"Blueberry":
-			ballConsumed += 3
+			scores[player_number] += 3
 		"Cherry":
-			ballConsumed += 2
+			scores[player_number] += 2
 		"Peach":
-			ballConsumed += 1
+			scores[player_number] += 1
 		"Watermelon":
-			ballConsumed += 5
+			scores[player_number] += 5
 		_:
-			ballConsumed += 1
-	
-	$CanvasLayer/Label.set_text("Balls Consumed:" + str(ballConsumed))
+			scores[player_number] += 1
+	# Update the UI for this player here
+	score_labels[player_number].text = str(scores[player_number])
 	var balls = $Ballspawner.spawnball(initialSpeed, initialAngle)
-	balls.yumyum.connect(ourMooDeng._on_yumyum)
+	for deng in dengArray:
+		balls.yumyum.connect(deng._on_yumyum)
 	_recalculate_spawn_parameters()
 
 func _process(delta: float) -> void:

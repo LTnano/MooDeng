@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://bewuhqlb6w2rr"]
+[gd_scene load_steps=8 format=3 uid="uid://bewuhqlb6w2rr"]
 
 [ext_resource type="Script" uid="uid://dt06m68t7ttso" path="res://Levels/gameplayloop.gd" id="1_1xdii"]
-[ext_resource type="PackedScene" uid="uid://cisp57ttsxee8" path="res://Assets/MooDeng.tscn" id="1_jhy4y"]
 [ext_resource type="Script" uid="uid://dv5nc225g0xay" path="res://Levels/arena_area.gd" id="2_ffqpf"]
 [ext_resource type="PackedScene" uid="uid://bt4etflsidt30" path="res://Assets/ballspawner.tscn" id="2_w7lws"]
 [ext_resource type="PackedScene" uid="uid://p8rc0idb7qim" path="res://Levels/barrier.tscn" id="4_mwrxl"]
@@ -56,13 +55,32 @@ boundarybox = NodePath("../ballspawncontainer")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="ScoreContainer" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -545.0
+offset_right = 137.0
 offset_bottom = 317.0
 grow_horizontal = 0
+
+[node name="ScoreLabel1" type="Label" parent="CanvasLayer/ScoreContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 68
+text = "BALLS CONSUMED: 0"
+
+[node name="ScoreLabel2" type="Label" parent="CanvasLayer/ScoreContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 68
+text = "BALLS CONSUMED: 0"
+
+[node name="ScoreLabel3" type="Label" parent="CanvasLayer/ScoreContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 68
+text = "BALLS CONSUMED: 0"
+
+[node name="ScoreLabel4" type="Label" parent="CanvasLayer/ScoreContainer"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 68
 text = "BALLS CONSUMED: 0"
 
@@ -73,9 +91,3 @@ script = ExtResource("7_ciu7a")
 position = Vector2(2, 1)
 shape = SubResource("RectangleShape2D_w7lws")
 debug_color = Color(0.267285, 0.633484, 0, 0.027451)
-
-[node name="MooDeng" parent="." node_paths=PackedStringArray("boundary") instance=ExtResource("1_jhy4y")]
-position = Vector2(2, 1)
-boundary = NodePath("../ArenaArea")
-speed = 1000
-offset = Vector2(30, 20)

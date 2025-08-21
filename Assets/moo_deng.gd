@@ -1,25 +1,34 @@
 extends CharacterBody2D
 class_name mooDeng
+
+const playerEnum = preload("res://Assets/player_enum.gd")
+
 @export var boundary: ArenaArea
 @export var speed = 1500
 @export var offset = Vector2(250, 150)
-signal score_increase(ballRef : blueBalls)
+@export var player_number: playerEnum.player_num
+
+signal score_increase(player_number: int, ballRef: blueBalls)
 var hippo_speed = Vector2.ZERO
 var screen_size
 
+
 func _ready():
 	screen_size = get_viewport_rect().size
-	
+
+func _setHippoPlayer(player_num: playerEnum.player_num):
+	player_number = player_num
+
 func _process(delta):
-	if Input.is_action_pressed("move_right"):
+	if Input.is_action_pressed("move_right"+str(player_number + 1)):
 		hippo_speed.x += speed
 		hippo_flip()
-	if Input.is_action_pressed("move_left"):
+	if Input.is_action_pressed("move_left"+str(player_number + 1)):
 		hippo_speed.x -= speed
 		hippo_flip()
-	if Input.is_action_pressed("move_down"):
+	if Input.is_action_pressed("move_down"+str(player_number + 1)):
 		hippo_speed.y += speed
-	if Input.is_action_pressed("move_up"):
+	if Input.is_action_pressed("move_up"+str(player_number + 1)):
 		hippo_speed.y -= speed
 
 	move_hippo(hippo_speed, delta)
@@ -59,5 +68,4 @@ func limit_boundary(pos) -> Vector2:
 
 
 func _on_yumyum(ballRef: blueBalls) -> void:
-	emit_signal("score_increase", ballRef)
-	
+	emit_signal("score_increase", player_number, ballRef)
