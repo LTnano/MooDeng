@@ -19,7 +19,7 @@ scale = Vector2(0.1, 0.1)
 slide_on_ceiling = false
 script = ExtResource("1_s3isx")
 
-[node name="Hippo2" type="AnimatedSprite2D" parent="."]
+[node name="Hippo" type="AnimatedSprite2D" parent="."]
 scale = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_v3uai")
 

@@ -49,7 +49,7 @@ move_rightp2={
 "deadzone": 0.2,
 "events": []
 }
-move_up2={
+move_upp2={
 "deadzone": 0.2,
 "events": []
 }

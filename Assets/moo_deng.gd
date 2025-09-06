@@ -20,15 +20,15 @@ func _setHippoPlayer(player_num: playerEnum.player_num):
 	player_number = player_num
 
 func _process(delta):
-	if Input.is_action_pressed("move_right"+str(player_number + 1)):
+	if Input.is_action_pressed("move_rightp"+str(player_number + 1)):
 		hippo_speed.x += speed
 		hippo_flip()
-	if Input.is_action_pressed("move_left"+str(player_number + 1)):
+	if Input.is_action_pressed("move_leftp"+str(player_number + 1)):
 		hippo_speed.x -= speed
 		hippo_flip()
-	if Input.is_action_pressed("move_down"+str(player_number + 1)):
+	if Input.is_action_pressed("move_downp"+str(player_number + 1)):
 		hippo_speed.y += speed
-	if Input.is_action_pressed("move_up"+str(player_number + 1)):
+	if Input.is_action_pressed("move_upp"+str(player_number + 1)):
 		hippo_speed.y -= speed
 
 	move_hippo(hippo_speed, delta)

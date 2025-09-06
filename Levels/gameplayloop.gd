@@ -19,6 +19,8 @@ var scores = []
 func _ready():
 	for each in range(numberOfPlayers):
 		var newDeng = playerTemp.instantiate()
+		# make deng spawn better
+		newDeng.position += Vector2(each*100, each*100)
 		newDeng.player_number = each
 		add_child(newDeng)
 		dengArray.append(newDeng)
