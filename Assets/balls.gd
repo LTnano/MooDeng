@@ -21,12 +21,12 @@ func _ready():
 
 	_initialise_ball_type()
 
-func yum(ballRef: blueBalls):
-	emit_signal("yumyum", ballRef)
+func yum(ballRef: blueBalls, theDengthatYum: mooDeng):
+	emit_signal("yumyum", ballRef, theDengthatYum)
 
 func _on_ball_detector_body_entered(body: Node2D) -> void:
 	if body is mooDeng:
-		yum(self)
+		yum(self, body)
 		queue_free()
 
 func _initialise_ball_type():

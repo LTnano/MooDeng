@@ -9,7 +9,7 @@ var initialAngle
 var dengArray = []
 var scores = []
 
-@export var numberOfPlayers: int = clamp(4, 1, 4)
+@export var numberOfPlayers: int = clamp(2, 1, 4)
 @onready var playerTemp= preload("res://Assets/MooDeng.tscn")
 @onready var score_labels = [$CanvasLayer/ScoreContainer/ScoreLabel1,
 							$CanvasLayer/ScoreContainer/ScoreLabel2,
@@ -25,8 +25,8 @@ func _ready():
 		add_child(newDeng)
 		dengArray.append(newDeng)
 
-
 	scores.clear()
+	
 	for i in range(numberOfPlayers):
 		scores.append(0)
 
@@ -44,29 +44,33 @@ func _ready():
 			balls.yumyum.connect(deng._on_yumyum)
 
 func _onscore(player_number: int, ballRef: blueBalls):
-	match ballRef.type_name:
-		"Apple":
-			scores[player_number] += 1
-		"Blueberry":
-			scores[player_number] += 3
-		"Cherry":
-			scores[player_number] += 2
-		"Peach":
-			scores[player_number] += 1
-		"Watermelon":
-			scores[player_number] += 5
-		_:
-			scores[player_number] += 1
-	# Update the UI for this player here
-	score_labels[player_number].text = str(scores[player_number])
-	var balls = $Ballspawner.spawnball(initialSpeed, initialAngle)
 	for deng in dengArray:
-		balls.yumyum.connect(deng._on_yumyum)
-	_recalculate_spawn_parameters()
+		if deng.player_number == player_number:
+			match ballRef.type_name:
+				"Apple":
+					scores[player_number] += 1
+				"Blueberry":
+					scores[player_number] += 3
+				"Cherry":
+					scores[player_number] += 2
+				"Peach":
+					scores[player_number] += 1
+				"Watermelon":
+					scores[player_number] += 5
+				_:
+					scores[player_number] += 1
+			# Update the UI for this player here
+			score_labels[player_number].text = str(scores[player_number])
+			var newBall = $Ballspawner.spawnball(initialSpeed, initialAngle)
+			for deng2 in dengArray:
+				newBall.yumyum.connect(deng2._on_yumyum)
+			_recalculate_spawn_parameters()
+
 
 func _process(delta: float) -> void:
 	pass
 
 func _recalculate_spawn_parameters():
-	initialSpeed = Vector2(randf_range(-1000, 1000), randf_range(-1000, 1000))
+	initialSpeed = Vector2(0,0)
+	#initialSpeed = Vector2(randf_range(-1000, 1000), randf_range(-1000, 1000))
 	initialAngle = randf_range(0, 2 * PI)

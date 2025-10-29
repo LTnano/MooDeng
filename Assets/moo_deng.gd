@@ -67,5 +67,6 @@ func limit_boundary(pos) -> Vector2:
 	
 
 
-func _on_yumyum(ballRef: blueBalls) -> void:
-	emit_signal("score_increase", player_number, ballRef)
+func _on_yumyum(ballRef: blueBalls, theDengthatYum: mooDeng) -> void:
+	if theDengthatYum.player_number == player_number:
+		emit_signal("score_increase", player_number, ballRef)
